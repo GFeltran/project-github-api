@@ -1,7 +1,8 @@
 const screen = {
     userProfile: document.querySelector('.profile-data'),
     renderUser(user){
-        let repositoriesItens = "";
+        let repositoriesItens = '';
+        let eventItens = '';
 
         this.userProfile.innerHTML =   `<div class="info">
                                             <img src="${user.avatarUrl}" alt="Foto de perfil do usuário">
@@ -28,6 +29,18 @@ const screen = {
             this.userProfile.innerHTML +=  `<div class="repositories section">
                                                 <h2>Repositórios</h2>
                                                 <ul>${repositoriesItens}</ul>
+                                            </div> `
+        }
+
+        if(user.events.length > 0){
+            user.events.forEach(event => eventItens += `<li>
+                                                            <p class='repo-name'>${event.name}</p>
+                                                            <p class='repo-commit'>-${event.commit ?? 'null'}</p>
+                                                        </li>`)
+
+            this.userProfile.innerHTML +=  `<div class="events section">
+                                                <h2>Eventos</h2>
+                                                <ul>${eventItens}</ul>
                                             </div> `
         }
     },

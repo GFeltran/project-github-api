@@ -6,6 +6,7 @@ const user = {
     followers: '',
     following: '',
     repositories: [],
+    events: [],
     setInfo(gitHubUser){
         this.avatarUrl = gitHubUser.avatar_url;
         this.name = gitHubUser.name;
@@ -14,8 +15,23 @@ const user = {
         this.followers = gitHubUser.followers;
         this.following = gitHubUser.following;
     },
-    setRespositories(repositories){
-        this.repositories = repositories
+    setRespositories(gitHubRepos){
+        this.repositories = gitHubRepos;
+    }, 
+    setEvents(gitHubEvents){
+
+        gitHubEvents.forEach(event => {
+            let eventItem = {};
+            eventItem.name = event.repo.name;
+
+            if(event.payload.commits === undefined){
+                eventItem.commit = 'Event sem commit.'
+            } else {
+                eventItem.commit = event.payload.commits[0].message;
+            }
+
+            this.events.push(eventItem);
+        });
     }
 };
 

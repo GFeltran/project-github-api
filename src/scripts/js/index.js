@@ -1,5 +1,6 @@
 import { getUser } from './services/user.js';
 import { getRepos } from './services/repositories.js';
+import { getEvent } from './services/events.js'
 
 import { user } from './objects/user.js';
 import { screen } from './objects/screen.js';
@@ -27,6 +28,7 @@ document.getElementById('input-search')
 async function getUserData(userName){ 
     const userData = await getUser(userName);
     const reposData = await getRepos(userName);
+    const eventData = await getEvent(userName)
   
     if(userData.message === "Not Found"){
         screen.renderNotFound();
@@ -35,9 +37,8 @@ async function getUserData(userName){
 
     user.setInfo(userData);
     user.setRespositories(reposData);
+    user.setEvents(eventData);
     screen.renderUser(user);
-
-    console.log(userData);
 }
 
 function validateEmptyInput(userName){
@@ -46,5 +47,3 @@ function validateEmptyInput(userName){
         return true;
     }
 }
-
-getUserData('cadudias');
