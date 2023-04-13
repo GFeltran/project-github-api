@@ -46,5 +46,3 @@ function validateEmptyInput(userName){
         return true;
     }
 }
-
-getUserData('cadudias');
