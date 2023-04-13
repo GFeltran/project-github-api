@@ -167,6 +167,35 @@ main {
   color: #fff
 }
 
+.container .profile-data .repositories ul li a .repo-infos{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3px;
+
+  margin-top: 5px;
+}
+
+.container .profile-data .repositories ul li a .repo-infos .info{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+
+  border-radius: 5px;
+  padding: 5px;
+  gap: 2px;
+
+  background-color: hotpink;
+  color: #ffffff;
+  transition: 0.3s ease-in-out;
+}
+
+.container .profile-data .repositories ul li a:hover .repo-infos .info{
+  background-color: #ffffff;
+  color: #000000;
+}
+
 .container .profile-data.hide{
   display: none;
 }

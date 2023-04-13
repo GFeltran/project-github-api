@@ -24,7 +24,28 @@ const screen = {
                                         </div>`
 
         if(user.repositories.length > 0) {
-            user.repositories.forEach(repo => repositoriesItens +=   `<li><a href="${repo.html_url}" target="_blank">${repo.name}</a></li>`);
+            user.repositories.forEach(repo => repositoriesItens += `<li>
+                                                                        <a href="${repo.url}" target="_blank">${repo.name}
+                                                                            <div class="repo-infos">
+                                                                                <div class="info fork">
+                                                                                    <i class="fas fa-code-branch"></i>
+                                                                                    <p>${repo.fork}</p>
+                                                                                </div>
+                                                                                <div class="info star">
+                                                                                    <i class="fas fa-star"></i>
+                                                                                    <p>${repo.stars}</p>
+                                                                                </div>
+                                                                                <div class="info watcher">
+                                                                                    <i class="fas fa-eye"></i>
+                                                                                    <p>${repo.watchers}</p>
+                                                                                </div>
+                                                                                <div class="info language">
+                                                                                    <i class="fas fa-code"></i>
+                                                                                    <p>${repo.language}</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </a>
+                                                                    </li>`);
 
             this.userProfile.innerHTML +=  `<div class="repositories section">
                                                 <h2>Repositórios</h2>

@@ -16,10 +16,25 @@ const user = {
         this.following = gitHubUser.following;
     },
     setRespositories(gitHubRepos){
-        this.repositories = gitHubRepos;
+        gitHubRepos.forEach(repo => {
+            let repoItem = {};
+
+            repoItem.name = repo.name;
+            repoItem.url  = repo.html_url;
+            repoItem.fork = repo.forks_count;
+            repoItem.watchers = repo.watchers_count;
+            repoItem.stars = repo.stargazers_count
+
+            if(repo.language === undefined | repo.language === null){
+                repoItem.language = '-'
+            } else {
+                repoItem.language = repo.language;
+            }
+
+            this.repositories.push(repoItem);
+        })
     }, 
     setEvents(gitHubEvents){
-
         gitHubEvents.forEach(event => {
             let eventItem = {};
             eventItem.name = event.repo.name;
