@@ -16,6 +16,8 @@ const user = {
         this.following = gitHubUser.following;
     },
     setRespositories(gitHubRepos){
+        this.repositories = []
+
         gitHubRepos.forEach(repo => {
             let repoItem = {};
 
@@ -35,6 +37,8 @@ const user = {
         })
     }, 
     setEvents(gitHubEvents){
+        this.events = []
+
         gitHubEvents.forEach(event => {
             let eventItem = {};
             eventItem.name = event.repo.name;
